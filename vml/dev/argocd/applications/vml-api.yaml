@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: https://github.com/trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
-    path: vml/dev/argocd/vml-api  # Changed to point to specific directory
+    path: vml/dev/base/vml-api  # Changed to point to specific directory
   
   # Destination
   destination:

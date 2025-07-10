@@ -5,9 +5,9 @@ metadata:
   name: vml-api
 
 resources:
-  - ../../base/vml-api-deployment.yaml
-  - ../../base/vml-api-service.yaml
-  - ../../base/vml-api-pvc.yaml
+  - vml-api-deployment.yaml
+  - vml-api-service.yaml
+  - vml-api-pvc.yaml
 
 commonLabels:
   component: api
