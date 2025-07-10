@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracking-api
+  labels:
+    app: tracking-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tracking-api
+  template:
+    metadata:
+      labels:
+        app: tracking-api
+    spec:
+      containers:
+      - name: tracking-api
+        image: vmapi/vml-s2:vietmapcloud.location.api.5.35.160
+        ports:
+        - name: api
+          containerPort: 6002
+          protocol: TCP
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Dev"
+        - name: ASPNETCORE_URLS
+          value: "http://+:6002"
+        - name: TZ
+          value: "Asia/Bangkok"
+        - name: coreServiceConfig__AutocompleteType
+          value: "5"
+        - name: coreServiceConfig__GoogleApis__IsEnableProxy
+          value: "false"
+        - name: coreServiceConfig__Proxy__Host
+          value: "103.54.154.1"
+        - name: GeocodeType
+          value: "10"
+        # Resources - adequate for tracking API
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        # Volume mount
+        volumeMounts:
+        - name: tracking-logs
+          mountPath: /app/logs
+          subPath: tracking-api-logs
+      volumes:
+      - name: tracking-logs
+        persistentVolumeClaim:
+          claimName: vml-api-pvc
+      # Add image pull secret
+      imagePullSecrets:
+      - name: registry-secret-clound
+      # Security
+      securityContext:
+        runAsUser: 1000

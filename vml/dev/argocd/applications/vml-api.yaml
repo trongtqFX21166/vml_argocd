@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vml-api
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: vml-api
+    app.kubernetes.io/part-of: vietmap-live
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Project reference
+  project: vietmap-live
+  
+  # Source configuration
+  source:
+    repoURL: https://github.com/trongtqFX21166/deployment.git
+    targetRevision: HEAD
+    path: modules/vml/dev/base
+  
+  # Destination
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vietmap-live
+  
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    - PruneLast=true
+    - RespectIgnoreDifferences=true
+    retry:
+      limit: 3
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 1m
+  
+  # Keep last 5 revisions
+  revisionHistoryLimit: 1
+  
+  # Application info
+  info:
+  - name: 'Service'
+    value: 'VML API'
+  - name: 'Environment'
+    value: 'Development'
+  - name: 'URL'
+    value: 'http://vml-api.vietmap-live.svc.cluster.local'

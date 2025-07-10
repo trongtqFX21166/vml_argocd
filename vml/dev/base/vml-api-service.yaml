@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vml-api
+  labels:
+    app: vml-api
+spec:
+  type: ClusterIP
+  ports:
+  - name: api
+    port: 80
+    targetPort: 6078
+    protocol: TCP
+  selector:
+    app: vml-api

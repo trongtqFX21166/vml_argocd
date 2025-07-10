@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: vietmap-live
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: vietmap-live-project
+spec:
+  description: Vietmap Live API project
+  
+  # Source repositories
+  sourceRepos:
+  - 'https://github.com/trongtqFX21166/deployment.git'
+  
+  # Destinations
+  destinations:
+  - namespace: vietmap-live
+    server: https://kubernetes.default.svc
+  
+  # Allowed cluster resources
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  
+  # Allowed namespace resources
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: ConfigMap
+  - group: ''
+    kind: Secret
+  - group: ''
+    kind: Service
+  - group: ''
+    kind: PersistentVolumeClaim
+  - group: apps
+    kind: Deployment
+  - group: apps
+    kind: ReplicaSet
+  - group: networking.k8s.io
+    kind: Ingress
+  
+  # Simple RBAC
+  roles:
+  - name: developer
+    description: Developer access to vml project
+    policies:
+    - p, proj:vietmap-live:developer, applications, get, vietmap-live/*, allow
+    - p, proj:vietmap-live:developer, applications, sync, vietmap-live/*, allow
+    groups:
+    - vietmap-live:developers
