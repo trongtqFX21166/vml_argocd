@@ -14,7 +14,7 @@ spec:
   
   # Source configuration
   source:
-    repoURL: https://github.com/trongtqFX21166/deployment.git
+    repoURL: https://github.com/trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
     path: modules/vml/dev/base
   

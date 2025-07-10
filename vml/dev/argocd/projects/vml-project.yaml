@@ -10,7 +10,7 @@ spec:
   
   # Source repositories
   sourceRepos:
-  - 'https://github.com/trongtqFX21166/deployment.git'
+  - 'https://github.com/trongtqFX21166/vml_argocd.git'
   
   # Destinations
   destinations:
