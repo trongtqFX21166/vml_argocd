@@ -16,41 +16,41 @@ spec:
         app: vml-api
     spec:
       containers:
-      - name: vml-api
-        image: vmapi/vml-s2:vietmapcloud.vietmaplive.api.14.8.125
-        ports:
-        - name: api
-          containerPort: 6078
-          protocol: TCP
-        env:
-        - name: ASPNETCORE_ENVIRONMENT
-          value: "Dev"
-        - name: ASPNETCORE_URLS
-          value: "http://+:6078"
-        - name: TZ
-          value: "Asia/Bangkok"
-        - name: IsShowOtpV1
-          value: "true"
-        # Resources - Increased memory limits
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "128Mi"
-            cpu: "100m"
-        # Volume mount
-        volumeMounts:
-        - name: vml-logs
-          mountPath: /app/logs
-          subPath: vml-api-logs
+        - name: vml-api
+          image: vmapi/vml-s2:vietmapcloud.vietmaplive.api.1.0.3
+          ports:
+            - name: api
+              containerPort: 6078
+              protocol: TCP
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Dev"
+            - name: ASPNETCORE_URLS
+              value: "http://+:6078"
+            - name: TZ
+              value: "Asia/Bangkok"
+            - name: IsShowOtpV1
+              value: "true"
+          # Resources - Increased memory limits
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          # Volume mount
+          volumeMounts:
+            - name: vml-logs
+              mountPath: /app/logs
+              subPath: vml-api-logs
       volumes:
-      - name: vml-logs
-        persistentVolumeClaim:
-          claimName: vml-api-pvc
+        - name: vml-logs
+          persistentVolumeClaim:
+            claimName: vml-api-pvc
       # Add image pull secret
       imagePullSecrets:
-      - name: registry-secret-clound
+        - name: registry-secret-clound
       # Security
       securityContext:
         runAsNonRoot: true
