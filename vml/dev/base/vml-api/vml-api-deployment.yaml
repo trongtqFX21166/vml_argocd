@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: vml-api
-          image: vmapi/vml-s2:vietmapcloud.vietmaplive.api.1.0.4
+          image: vmapi/vml-s2:vietmapcloud.vietmaplive.api.1.0.5
           ports:
             - name: api
               containerPort: 6078
