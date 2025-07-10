@@ -16,14 +16,7 @@ spec:
   source:
     repoURL: https://github.com/trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
-    path: vml/dev/base
-    # Only deploy vml-api resources
-    kustomize:
-      namePrefix: ""
-      nameSuffix: ""
-      resources:
-      - vml-api-deployment.yaml
-      - vml-api-service.yaml
+    path: vml/dev/argocd/vml-api  # Changed to point to specific directory
   
   # Destination
   destination:
@@ -55,6 +48,6 @@ spec:
   - name: 'Service'
     value: 'VML API'
   - name: 'Environment'
-    value: 'Development'
+    value: 'Dev'
   - name: 'URL'
     value: 'http://vml-api.vietmap-live.svc.cluster.local'

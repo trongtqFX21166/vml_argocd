@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: tracking-api
+
+resources:
+  - ../../base/tracking-api-deployment.yaml
+  - ../../base/tracking-api-service.yaml
+
+commonLabels:
+  component: api
+  part-of: vietmap-live
+  service: tracking-api
+
+namespace: vietmap-live-dev
