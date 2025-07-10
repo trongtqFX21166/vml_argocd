@@ -16,7 +16,14 @@ spec:
   source:
     repoURL: https://github.com/trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
-    path: vml/dev/argocd/base
+    path: vml/dev/base
+    # Only deploy vml-api resources
+    kustomize:
+      namePrefix: ""
+      nameSuffix: ""
+      resources:
+      - vml-api-deployment.yaml
+      - vml-api-service.yaml
   
   # Destination
   destination:

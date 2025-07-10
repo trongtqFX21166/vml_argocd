@@ -16,7 +16,7 @@ spec:
   source:
     repoURL: https://github.com/trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
-    path: vml/dev/argocd/base
+    path: vml/dev/base
     # Only deploy tracking-api resources
     kustomize:
       namePrefix: ""
