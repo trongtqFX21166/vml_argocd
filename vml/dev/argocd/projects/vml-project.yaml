@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: vietmap-live
+  name: vietmap-live-dev
   namespace: argocd
   labels:
-    app.kubernetes.io/name: vietmap-live-project
+    app.kubernetes.io/name: vietmap-live-dev-project
 spec:
-  description: Vietmap Live API project
+  description: Vietmap Live Dev project
   
   # Source repositories
   sourceRepos:
@@ -14,7 +14,7 @@ spec:
   
   # Destinations
   destinations:
-  - namespace: vietmap-live
+  - namespace: vietmap-live-dev
     server: https://kubernetes.default.svc
   
   # Allowed cluster resources
@@ -44,7 +44,7 @@ spec:
   - name: developer
     description: Developer access to vml project
     policies:
-    - p, proj:vietmap-live:developer, applications, get, vietmap-live/*, allow
-    - p, proj:vietmap-live:developer, applications, sync, vietmap-live/*, allow
+    - p, proj:vietmap-live-dev:developer, applications, get, vietmap-live-dev/*, allow
+    - p, proj:vietmap-live-dev:developer, applications, sync, vietmap-live-dev/*, allow
     groups:
-    - vietmap-live:developers
+    - vietmap-live-dev:developers

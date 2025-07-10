@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
   labels:
     app.kubernetes.io/name: vml-api
-    app.kubernetes.io/part-of: vietmap-live
+    app.kubernetes.io/part-of: vietmap-live-dev
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   # Project reference
-  project: vietmap-live
+  project: vietmap-live-dev
   
   # Source configuration
   source:
@@ -21,7 +21,7 @@ spec:
   # Destination
   destination:
     server: https://kubernetes.default.svc
-    namespace: vietmap-live
+    namespace: vietmap-live-dev
   
   # Sync policy
   syncPolicy:
