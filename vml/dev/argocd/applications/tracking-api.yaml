@@ -14,7 +14,7 @@ spec:
   
   # Source configuration
   source:
-    repoURL: https://github.com/trongtqFX21166/vml_argocd.git
+    repoURL: git@github.com:trongtqFX21166/vml_argocd.git
     targetRevision: HEAD
     path: vml/dev/base/tracking-api  # Changed to point to specific directory
   
