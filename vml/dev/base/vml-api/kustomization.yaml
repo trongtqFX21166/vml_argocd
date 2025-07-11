@@ -7,8 +7,6 @@ metadata:
 resources:
   - vml-api-deployment.yaml
   - vml-api-service.yaml
-  - vml-api-pvc.yaml
-  - vml-api-pv.yaml
 
 commonLabels:
   component: api
