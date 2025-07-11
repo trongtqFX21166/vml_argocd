@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vml-api
+  name: vml-api-test
   labels:
-    app: vml-api
+    app: vml-api-test
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: vml-api
+      app: vml-api-test
   template:
     metadata:
       labels:
-        app: vml-api
+        app: vml-api-test
     spec:
       containers:
-        - name: vml-api
+        - name: vml-api-test
           image: vmapi/vml-s2:vietmapcloud.vietmaplive.api.1.0.8
           ports:
             - name: api
@@ -43,11 +43,11 @@ spec:
           volumeMounts:
             - name: vml-logs
               mountPath: /app/logs
-              subPath: vml-api-logs
+              subPath: vml-api-test-logs
       volumes:
         - name: vml-logs
           persistentVolumeClaim:
-            claimName: vml-api-pvc
+            claimName: vml-api-test-pvc
       # Add image pull secret
       imagePullSecrets:
         - name: registry-secret-clound

@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tracking-api
+  name: tracking-api-test
   labels:
-    app: tracking-api
+    app: tracking-api-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tracking-api
+      app: tracking-api-test
   template:
     metadata:
       labels:
-        app: tracking-api
+        app: tracking-api-test
     spec:
       containers:
-      - name: tracking-api
+      - name: tracking-api-test
         image: vmapi/vml-s2:vietmapcloud.location.api.5.35.160
         ports:
         - name: api
@@ -48,7 +48,7 @@ spec:
         volumeMounts:
         - name: tracking-logs
           mountPath: /app/logs
-          subPath: tracking-api-logs
+          subPath: tracking-api-test-logs
       volumes:
       - name: tracking-logs
         persistentVolumeClaim:
