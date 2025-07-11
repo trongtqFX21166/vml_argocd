@@ -9,8 +9,10 @@ spec:
   accessModes:
   - ReadWriteOnce
   storageClassName: local-storage
-  local:
+  persistentVolumeReclaimPolicy: Delete
+  hostPath:
     path: /home/admin/vml-api-test-pv
+    type: DirectoryOrCreate  # This automatically creates the directory    
   nodeAffinity:
     required:
       nodeSelectorTerms:
