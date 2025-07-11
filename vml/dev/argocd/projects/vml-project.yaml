@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: vietmap-live-dev
-  namespace: argocd
+  namespace: vml-argo
   labels:
     app.kubernetes.io/name: vietmap-live-dev-project
 spec:

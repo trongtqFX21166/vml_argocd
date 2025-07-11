@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tracking-api
-  namespace: argocd
+  namespace: vml-argo
   labels:
     app.kubernetes.io/name: tracking-api
     app.kubernetes.io/part-of: vietmap-live-dev
