@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: vml-api-test-pv
-  namespace: vietmap-live
+  namespace: vietmap-live-dev
 spec:
   capacity:
     storage: 10Gi
