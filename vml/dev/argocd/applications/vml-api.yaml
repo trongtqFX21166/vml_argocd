@@ -50,4 +50,4 @@ spec:
   - name: 'Environment'
     value: 'Dev'
   - name: 'URL'
-    value: 'http://vml-api.vietmap-live-dev.svc.cluster.local'
+    value: 'http://vml-api-test.vietmap-live-dev.svc.cluster.local'
